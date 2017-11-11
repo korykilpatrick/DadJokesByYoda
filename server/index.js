@@ -14,9 +14,17 @@ app.use(bodyParser.json());
 app.get('/joke', (req, res) => {
 	dadJoke.getDadJoke()
 		.then(results => JSON.parse(results).attachments[0]['text'])
-		.then(joke => yodaSpeak.convert(joke))
+		.then(joke => {
+			// console.log('DadJoke: ', joke);
+			// yodaSpeak.convert(joke)})
+			res.json(joke)
 		.then(results => console.log('this is yoda: ', results))
 		.catch(err => console.log('Error in promise chain: ', err))
+	})
+})
+
+app.post('/favorites', (req, res) => {
+	
 })
 var port = 8080;
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Search from './components/Search.jsx';
-import JokeDisplay from './components/JokeDisplay.jsx';
+import GetJoke from './components/GetJoke.jsx';
+import DisplayJoke from './components/DisplayJoke.jsx';
 import FavoritesList from './components/FavoritesList.jsx';
 
 
@@ -10,33 +10,35 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			temp: ''
+			joke: ''
 		}
 	}
 
 	componentDidMount() {
-		this.getJoke();
+		this.getJoke()
 	}	
 
 	getJoke() {
-		$.ajax({
-			method: 'GET',
-			url: '/joke'
-		})
+		// $.ajax({
+		// 	method: 'GET',
+		// 	url: '/joke'
+		// }).done(joke => 
+		// 	this.setState({
+		// 		joke: joke
+		// }))
 	}
 
-	// getYodaDadJoke() {
-	// 	getDadJoke()
-	// 	.then(dadjoke => convertToYodaSpeak(dadjoke))
-	// 	.then()
-	// }
+	favorite() {
+		// post to database
+		
+	}
 
 	render() {
 		return (
 			<div>
 				<h2>Jokes, Dad Has</h2>
-				<Search />
-				<JokeDisplay />
+				<GetJoke getJoke={this.getJoke.bind(this)} />
+				<DisplayJoke joke={this.state.joke}/>
 				<FavoritesList />
 			</div>
 		)
