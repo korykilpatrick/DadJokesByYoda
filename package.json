@@ -1,0 +1,32 @@
+{
+  "name": "dadjokesbyyoda",
+  "version": "1.0.0",
+  "description": "Dad Jokes, as delivered by yoda",
+  "main": "index.js",
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js"
+  },
+  "author": "Kory Kilpatrick",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "jquery": "^3.1.1",
+    "mongoose": "^4.9.6",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.2",
+    "yoda-speak": "^0.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^3.8.1"
+  }
+}
