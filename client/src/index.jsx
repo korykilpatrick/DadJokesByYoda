@@ -11,6 +11,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			joke: '',
+			originalToggle: false,
 			favoritesList: []
 		}
 	}
@@ -48,7 +49,7 @@ class App extends React.Component {
 			url: '/favorites',
 			data: JSON.stringify({joke}),
 			contentType: 'application/json'
-		}).done( () => {
+		}).done(() => {
 			this.getFavorites();
 		})
 	}
@@ -63,13 +64,27 @@ class App extends React.Component {
 		})
 	}
 
+	toggleOriginal() {
+		this.setState(prevState => ({
+      originalToggle: !prevState.originalToggle
+    }));
+	}
+
 	render() {
 		return (
-			<div>
-				<h2>Jokes, Dad Has</h2>
-				<GetJoke getJoke={this.getJoke.bind(this)} />
-				<JokeDisplay joke={this.state.joke ? this.state.joke.contents.translated : this.state.joke}/>
-				<FavoritesList clear={this.clearFavorites.bind(this)} addFavorite={this.addFavorite.bind(this)} favoritesList={this.state.favoritesList}/>
+			<div className="wrapper">
+				<div className="box header">
+					<h2>Jokes, Dad Has</h2>
+				</div>
+				<div className="box content">
+					<GetJoke getJoke={this.getJoke.bind(this)} />
+					<JokeDisplay joke={this.state.joke} toggleOriginal={this.toggleOriginal.bind(this)} showOriginal={this.state.originalToggle}/>
+				</div>
+				<div className="box sidebar">
+				</div>
+				<div className="box footer">
+					<FavoritesList clear={this.clearFavorites.bind(this)} addFavorite={this.addFavorite.bind(this)} favoritesList={this.state.favoritesList}/>
+				</div>	
 			</div>
 		)
 	}	
