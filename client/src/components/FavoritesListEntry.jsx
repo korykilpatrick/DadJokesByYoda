@@ -1,7 +1,10 @@
 import React from 'react';
 
-const FavoritesListEntry = (props) => (
+const FavoritesListEntry = ({joke}) => (
 	<div>
+		<ul>
+			{joke.translated}
+		</ul>
 	</div>
 )
 

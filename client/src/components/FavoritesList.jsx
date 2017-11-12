@@ -1,10 +1,12 @@
 import React from 'react';
 import FavoritesListEntry from './FavoritesListEntry.jsx';
 
-const FavoritesList = (props) => (
+const FavoritesList = ({favoritesList, addFavorite}) => (
 	<div>
-		<button>To Favorites, Save</button>
-		<FavoritesListEntry />
+		<button onClick={addFavorite}>To Favorites, Save</button>
+		{favoritesList.map(joke => 
+			<FavoritesListEntry joke={joke} key={joke.text}/>
+		)}
 	</div>
 )
 
