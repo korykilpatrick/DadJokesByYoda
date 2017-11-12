@@ -29,11 +29,14 @@ app.post('/favorites', (req, res) => {
 
 app.get('/favorites', (req, res) => {
 	db.getFavorites()
-		.then(favs => {
-			console.log('These are the favs', favs)
-			res.json(favs)})
+		.then(favs => res.json(favs))
 		.catch(err => res.sendStatus(404))
 });
+
+app.get('/clearFavorites', (req, res) => {
+	db.clearFavorites()
+		.then(() => res.sendStatus(200))
+})
 
 var port = 8080;
 

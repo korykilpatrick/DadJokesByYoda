@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import GetJoke from './components/GetJoke.jsx';
-import DisplayJoke from './components/DisplayJoke.jsx';
+import JokeDisplay from './components/JokeDisplay.jsx';
 import FavoritesList from './components/FavoritesList.jsx';
 
 
@@ -53,13 +53,23 @@ class App extends React.Component {
 		})
 	}
 
+	clearFavorites() {
+		this.setState({
+			favoritesList: []
+		})
+		$.ajax({
+			method: 'GET',
+			url: '/clearFavorites'
+		})
+	}
+
 	render() {
 		return (
 			<div>
 				<h2>Jokes, Dad Has</h2>
 				<GetJoke getJoke={this.getJoke.bind(this)} />
-				<DisplayJoke joke={this.state.joke ? this.state.joke.contents.translated : this.state.joke}/>
-				<FavoritesList addFavorite={this.addFavorite.bind(this)} favoritesList={this.state.favoritesList}/>
+				<JokeDisplay joke={this.state.joke ? this.state.joke.contents.translated : this.state.joke}/>
+				<FavoritesList clear={this.clearFavorites.bind(this)} addFavorite={this.addFavorite.bind(this)} favoritesList={this.state.favoritesList}/>
 			</div>
 		)
 	}	

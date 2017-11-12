@@ -30,6 +30,9 @@ let isDuplicate = text => (
 
 let getFavorites = () => Favorite.find();
 
+let clearFavorites = () => Favorite.collection.drop();
+
 module.exports.addFavorite = addFavorite;
 module.exports.getFavorites = getFavorites;
 module.exports.isDuplicate = isDuplicate;
+module.exports.clearFavorites = clearFavorites;
