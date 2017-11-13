@@ -4,7 +4,7 @@ import $ from 'jquery';
 import GetJoke from './components/GetJoke.jsx';
 import JokeDisplay from './components/JokeDisplay.jsx';
 import FavoritesList from './components/FavoritesList.jsx';
-
+import styles from '../../styles/styles.css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -42,7 +42,6 @@ class App extends React.Component {
 		}).fail(err => console.log('Error getting favorites: ', err))
 	}
 	addFavorite() {
-		// post to database
 		let joke = this.state.joke;
 		$.ajax({
 			method: 'POST',
@@ -71,18 +70,21 @@ class App extends React.Component {
 	}
 
 	render() {
+		const hStyle = {
+			color: 'white',
+			fontFamily: 'georgia',
+			fontSize: '30px'
+		}
 		return (
-			<div className="wrapper">
-				<div className="box header">
-					<h2>Jokes, Dad Has</h2>
+			<div>
+				<div>
+					<h1 style={hStyle}>Jokes, Dad Has</h1>
 				</div>
-				<div className="box content">
+				<div>
 					<GetJoke getJoke={this.getJoke.bind(this)} />
 					<JokeDisplay joke={this.state.joke} toggleOriginal={this.toggleOriginal.bind(this)} showOriginal={this.state.originalToggle}/>
 				</div>
-				<div className="box sidebar">
-				</div>
-				<div className="box footer">
+				<div>
 					<FavoritesList clear={this.clearFavorites.bind(this)} addFavorite={this.addFavorite.bind(this)} favoritesList={this.state.favoritesList}/>
 				</div>	
 			</div>

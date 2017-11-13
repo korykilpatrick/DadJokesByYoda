@@ -1,5 +1,4 @@
 var express = require('express');
-var tokens = require('../config');
 var bodyParser = require('body-parser');
 var db = require('../db/index');
 var dadJoke = require('../helpers/dadJoke');
